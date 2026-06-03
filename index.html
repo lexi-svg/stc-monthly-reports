@@ -3,582 +3,267 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STC Monthly Report - May 2026</title>
+<title>STC Reports -- Precision Fuel &amp; Hydration</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-  :root {
-    --navy: #0f1b2d;
-    --dark-blue: #1a2940;
-    --accent: #ff6b35;
-    --accent-light: #ff8c5a;
-    --teal: #2ec4b6;
-    --teal-dark: #1a9e92;
-    --light-bg: #f4f6f9;
-    --card-bg: #ffffff;
-    --text: #2d3748;
-    --text-light: #718096;
-    --border: #e2e8f0;
-    --green: #38a169;
-    --green-bg: #f0fff4;
-    --red: #e53e3e;
-    --red-bg: #fff5f5;
-    --yellow: #d69e2e;
-    --yellow-bg: #fffff0;
-    --purple: #805ad5;
-  }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--light-bg);
-    color: var(--text);
-    line-height: 1.6;
+    background: #f4f6f9;
+    color: #2d3748;
+    min-height: 100vh;
   }
 
-  .header {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--dark-blue) 100%);
+  header {
+    background: #0f1b2d;
+    padding: 36px 40px;
+  }
+  header h1 {
     color: white;
-    padding: 48px 40px 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(255,107,53,0.15) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-  .header-top {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 8px;
-    position: relative;
-    z-index: 1;
-  }
-  .header-badge {
-    background: var(--accent);
-    color: white;
-    font-size: 11px;
+    font-size: 22px;
     font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 20px;
+    letter-spacing: -0.3px;
   }
-  .header h1 {
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    position: relative;
-    z-index: 1;
-  }
-  .header h1 span { color: var(--accent); }
-  .header .subtitle {
-    font-size: 16px;
-    color: rgba(255,255,255,0.6);
-    font-weight: 400;
+  header h1 span { color: #ff6b35; }
+  header p {
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
     margin-top: 4px;
-    position: relative;
-    z-index: 1;
   }
 
-  .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px 60px; }
+  main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
 
-  .kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 32px;
-    margin-top: -28px;
-    position: relative;
-    z-index: 2;
-  }
-  .kpi-card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    border: 1px solid var(--border);
-    text-align: center;
-  }
-  .kpi-label {
+  .section-label {
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
     text-transform: uppercase;
-    color: var(--text-light);
-    margin-bottom: 8px;
+    color: #718096;
+    margin-bottom: 12px;
+    margin-top: 36px;
   }
-  .kpi-value {
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--navy);
-    line-height: 1.1;
-  }
-  .kpi-change {
-    font-size: 13px;
-    font-weight: 600;
-    margin-top: 6px;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 2px 10px;
-    border-radius: 20px;
-  }
-  .kpi-change.up { color: var(--green); background: var(--green-bg); }
-  .kpi-change.down { color: var(--red); background: var(--red-bg); }
+  .section-label:first-child { margin-top: 0; }
 
-  .section {
-    background: var(--card-bg);
-    border-radius: 12px;
-    padding: 28px 32px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-    border: 1px solid var(--border);
+  .report-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
-  .section-header {
+
+  .report-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 18px 22px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    padding-bottom: 14px;
-    border-bottom: 2px solid var(--light-bg);
+    justify-content: space-between;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.15s, border-color 0.15s;
   }
-  .section-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
+  .report-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    border-color: #cbd5e0;
+  }
+
+  .report-info { flex: 1; }
+  .report-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a2940;
+  }
+  .report-meta {
+    font-size: 13px;
+    color: #718096;
+    margin-top: 2px;
+  }
+
+  .report-stats {
     display: flex;
+    gap: 20px;
     align-items: center;
-    justify-content: center;
-    font-size: 18px;
+    margin-left: 24px;
     flex-shrink: 0;
   }
-  .section-icon.orange { background: #fff3ec; }
-  .section-icon.teal { background: #e6faf8; }
-  .section-icon.purple { background: #f3edff; }
-  .section-icon.green { background: var(--green-bg); }
-  .section-icon.red { background: var(--red-bg); }
-  .section-icon.blue { background: #ebf4ff; }
-
-  .section h2 {
+  .stat {
+    text-align: right;
+  }
+  .stat-value {
     font-size: 18px;
     font-weight: 700;
-    color: var(--navy);
+    color: #0f1b2d;
+    line-height: 1.1;
   }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-  }
-  thead th {
-    text-align: left;
-    font-size: 11px;
+  .stat-label {
+    font-size: 10px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    color: var(--text-light);
-    padding: 10px 12px;
-    border-bottom: 2px solid var(--border);
+    color: #a0aec0;
+    margin-top: 1px;
   }
-  thead th.right { text-align: right; }
-  tbody td {
-    padding: 11px 12px;
-    border-bottom: 1px solid var(--light-bg);
-    vertical-align: middle;
-  }
-  tbody td.right { text-align: right; }
-  tbody tr:last-child td { border-bottom: none; }
-  tbody tr:hover { background: var(--light-bg); }
-  .rank {
-    font-weight: 700;
-    color: var(--text-light);
-    font-size: 13px;
-    width: 32px;
-  }
-  .center-name { font-weight: 600; }
-  .tests-count { font-weight: 700; font-size: 16px; color: var(--navy); }
-  .change-pill {
-    display: inline-flex;
-    align-items: center;
+  .stat-change {
     font-size: 12px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-top: 4px;
+    display: inline-block;
+  }
+  .up { color: #38a169; background: #f0fff4; }
+  .down { color: #e53e3e; background: #fff5f5; }
+
+  .arrow {
+    color: #cbd5e0;
+    font-size: 18px;
+    margin-left: 16px;
+    flex-shrink: 0;
+  }
+
+  .tag {
+    font-size: 11px;
     font-weight: 600;
     padding: 3px 10px;
     border-radius: 20px;
-    white-space: nowrap;
+    letter-spacing: 0.5px;
+    margin-left: 16px;
+    flex-shrink: 0;
   }
-  .change-pill.up { color: var(--green); background: var(--green-bg); }
-  .change-pill.down { color: var(--red); background: var(--red-bg); }
-  .change-pill.new { color: var(--purple); background: #f3edff; }
-  .change-pill.reactivated { color: var(--teal-dark); background: #e6faf8; }
+  .tag.summary { background: #ebf4ff; color: #2b6cb0; }
 
-  .sig-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    border-radius: 8px;
-    margin-bottom: 6px;
-  }
-  .sig-item.up { background: var(--green-bg); }
-  .sig-item.down { background: var(--red-bg); }
-  .sig-arrow {
-    font-size: 20px;
-    font-weight: 800;
-    width: 28px;
-    text-align: center;
-  }
-  .sig-arrow.up { color: var(--green); }
-  .sig-arrow.down { color: var(--red); }
-  .sig-name { font-weight: 600; flex: 1; }
-  .sig-detail { font-size: 13px; color: var(--text-light); font-weight: 500; }
-  .sig-pct { font-weight: 700; font-size: 14px; min-width: 70px; text-align: right; }
-  .sig-pct.up { color: var(--green); }
-  .sig-pct.down { color: var(--red); }
-
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  .status-list { list-style: none; }
-  .status-list li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 12px;
-    border-radius: 6px;
-    margin-bottom: 4px;
-    font-size: 14px;
-  }
-  .status-list li:nth-child(odd) { background: var(--light-bg); }
-  .status-list .center { font-weight: 500; }
-  .status-list .count { font-weight: 700; color: var(--navy); }
-
-  .cleaning-note {
-    background: var(--yellow-bg);
-    border: 1px solid #fefcbf;
-    border-radius: 8px;
-    padding: 16px 20px;
-    font-size: 13px;
-    color: #744210;
-    margin-bottom: 20px;
-  }
-  .cleaning-note strong { color: #975a16; }
-
-  .pfh-hero {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--dark-blue) 100%);
-    border-radius: 12px;
-    padding: 24px 28px;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  .pfh-hero-left h3 {
-    color: white;
-    font-size: 18px;
-    font-weight: 700;
-  }
-  .pfh-hero-left p {
-    color: rgba(255,255,255,0.6);
-    font-size: 13px;
-    margin-top: 2px;
-  }
-  .pfh-hero-right {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-  }
-  .pfh-hero-num {
-    font-size: 42px;
-    font-weight: 800;
-    color: var(--accent);
-    line-height: 1;
-  }
-  .pfh-hero-change {
-    font-size: 14px;
-    font-weight: 700;
-    padding: 3px 12px;
-    border-radius: 20px;
-  }
-  .pfh-hero-change.up { color: var(--green); background: var(--green-bg); }
-  .pfh-hero-change.down { color: var(--red); background: var(--red-bg); }
-
-  .pfh-table { font-size: 13px; }
-  .pfh-table thead th { font-size: 10px; }
-  .pfh-table td.loc-detail { font-size: 12px; color: var(--text-light); }
-
-  .footer {
+  footer {
     text-align: center;
     padding: 20px;
     font-size: 12px;
-    color: var(--text-light);
+    color: #a0aec0;
   }
 
-  @media (max-width: 768px) {
-    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-    .two-col { grid-template-columns: 1fr; }
-    .header h1 { font-size: 24px; }
-    .container { padding: 20px 16px 40px; }
-    .pfh-hero { flex-direction: column; align-items: flex-start; }
+  @media (max-width: 600px) {
+    header { padding: 28px 20px; }
+    .report-stats { display: none; }
+    .report-card { padding: 16px 18px; }
   }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <div class="header-top">
-    <div class="header-badge">MAY 2026</div>
-  </div>
-  <h1>STC Monthly Report -- <span>May 2026</span></h1>
-  <div class="subtitle">Sweat Test Center Performance Summary</div>
-</div>
+<header>
+  <h1>STC Reports <span>/ Precision Fuel &amp; Hydration</span></h1>
+  <p>Sweat Test Center performance data -- updated monthly</p>
+</header>
 
-<div class="container">
+<main>
 
-<!-- KPI CARDS -->
-<div class="kpi-grid">
-  <div class="kpi-card">
-    <div class="kpi-label">Total Tests</div>
-    <div class="kpi-value">708</div>
-    <div class="kpi-change down">-0.4% vs Apr</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-label">Active Centers</div>
-    <div class="kpi-value">108</div>
-    <div class="kpi-change up">+12.5% vs Apr</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-label">Avg Test Score</div>
-    <div class="kpi-value">50.1</div>
-    <div class="kpi-label" style="margin-top:4px; margin-bottom:0">mmol/L</div>
-    <div class="kpi-change down">-1.8% vs Apr</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-label">Avg Tests / Center</div>
-    <div class="kpi-value">6.56</div>
-    <div class="kpi-change down">-11.5% vs Apr</div>
-  </div>
-</div>
+  <div class="section-label">Monthly Reports</div>
+  <div class="report-list">
 
-<!-- DATA CLEANING -->
-<div class="cleaning-note">
-  <strong>Data Cleaning:</strong> 16 entries removed from 724 raw -- 14 non-approved Energy Lab officer entries, 1 null location (PF&amp;H HQ), 1 bad score-150 entry.
-</div>
+    <a class="report-card" href="STC_Monthly_Report_-_May_2026.html">
+      <div class="report-info">
+        <div class="report-title">May 2026</div>
+        <div class="report-meta">Monthly performance summary</div>
+      </div>
+      <div class="report-stats">
+        <div class="stat">
+          <div class="stat-value">708</div>
+          <div class="stat-label">Tests</div>
+          <div class="stat-change down">-0.4% vs Apr</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">108</div>
+          <div class="stat-label">Centers</div>
+          <div class="stat-change up">+12.5%</div>
+        </div>
+      </div>
+      <div class="arrow">›</div>
+    </a>
 
-<!-- PF&H FAMILY BREAKDOWN -->
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon orange">&#x1F3E2;</div>
-    <h2>PF&amp;H Family Breakdown</h2>
-  </div>
+    <a class="report-card" href="STC_Monthly_Report_-_April_2026.html">
+      <div class="report-info">
+        <div class="report-title">April 2026</div>
+        <div class="report-meta">Monthly performance summary</div>
+      </div>
+      <div class="report-stats">
+        <div class="stat">
+          <div class="stat-value">711</div>
+          <div class="stat-label">Tests</div>
+          <div class="stat-change up">+15.8% vs Mar</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">96</div>
+          <div class="stat-label">Centers</div>
+        </div>
+      </div>
+      <div class="arrow">›</div>
+    </a>
 
-  <div class="pfh-hero">
-    <div class="pfh-hero-left">
-      <h3>PF&amp;H HQ Combined</h3>
-      <p>PF&amp;H HQ + PF&amp;H + Precision Fuel &amp; Hydration</p>
-    </div>
-    <div class="pfh-hero-right">
-      <div class="pfh-hero-num">52</div>
-      <div class="pfh-hero-change down">-42.9% vs Apr</div>
-    </div>
-  </div>
+    <a class="report-card" href="STC_Monthly_Report_-_March_2026.html">
+      <div class="report-info">
+        <div class="report-title">March 2026</div>
+        <div class="report-meta">Monthly performance summary</div>
+      </div>
+      <div class="report-stats">
+        <div class="stat">
+          <div class="stat-value">614</div>
+          <div class="stat-label">Tests</div>
+          <div class="stat-change up">+39.5% vs Feb</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">100</div>
+          <div class="stat-label">Centers</div>
+        </div>
+      </div>
+      <div class="arrow">›</div>
+    </a>
 
-  <table class="pfh-table">
-    <thead>
-      <tr><th>Sub-Company</th><th>Officer</th><th class="right">Tests</th><th>Locations</th></tr>
-    </thead>
-    <tbody>
-      <tr><td class="center-name">PF&amp;H HQ</td><td>Sean O&rsquo;Mahony</td><td class="right tests-count">15</td><td class="loc-detail">Vancouver (11), Surrey (4)</td></tr>
-      <tr><td class="center-name">PF&amp;H</td><td>Lexi Kelson</td><td class="right tests-count">10</td><td class="loc-detail">29029 BBTC (10)</td></tr>
-      <tr><td class="center-name">Precision Fuel &amp; Hydration</td><td>Nicole Brunt</td><td class="right tests-count">10</td><td class="loc-detail">Canberra (10)</td></tr>
-      <tr><td class="center-name">PF&amp;H HQ</td><td>Emily Sutton</td><td class="right tests-count">8</td><td class="loc-detail">PF&amp;H HQ (8)</td></tr>
-      <tr><td class="center-name">PF&amp;H HQ</td><td>Lindsey Hunt</td><td class="right tests-count">3</td><td class="loc-detail">PF&amp;H HQ (3)</td></tr>
-      <tr><td class="center-name">PF&amp;H HQ</td><td>Chris Harris</td><td class="right tests-count">2</td><td class="loc-detail">HQ (2)</td></tr>
-      <tr><td class="center-name">PF&amp;H HQ</td><td>Sam Shepherd</td><td class="right tests-count">2</td><td class="loc-detail">HQ (2)</td></tr>
-      <tr><td class="center-name">PF&amp;H HQ</td><td>Tash Cooper-Smith</td><td class="right tests-count">2</td><td class="loc-detail">HQ (2)</td></tr>
-    </tbody>
-  </table>
-
-  <div style="height:16px"></div>
-  <table class="pfh-table">
-    <thead>
-      <tr><th colspan="4" style="font-size:12px; font-weight:700; color:var(--navy); text-transform:none; letter-spacing:0;">Other PF&amp;H Family</th></tr>
-    </thead>
-    <tbody>
-      <tr><td class="center-name">PF&amp;H Japan</td><td>Hikaru Aikawa</td><td class="right tests-count">16</td><td class="loc-detail">Japan (16)</td></tr>
-      <tr><td class="center-name">PF&amp;H Longmont</td><td>Tom Robey</td><td class="right tests-count">6</td><td class="loc-detail">Longmont (4), Location (1), Boulder (1)</td></tr>
-      <tr><td class="center-name">PF&amp;H France</td><td>The Triathlon Store</td><td class="right tests-count">5</td><td class="loc-detail">Triathlon Store Paris Etoile (5)</td></tr>
-      <tr><td class="center-name">PF&amp;H Australia</td><td>Oliver Hobson</td><td class="right tests-count">2</td><td class="loc-detail">Gold Coast (2)</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- TOP 15 BY VOLUME -->
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon blue">&#x1F4CA;</div>
-    <h2>Top 15 Test Centers by Volume</h2>
-  </div>
-  <table>
-    <thead>
-      <tr><th style="width:40px">#</th><th>Test Center</th><th class="right">Tests</th><th class="right">vs Apr</th></tr>
-    </thead>
-    <tbody>
-      <tr><td class="rank">1</td><td class="center-name">PF&amp;H HQ</td><td class="right tests-count">52</td><td class="right"><span class="change-pill down">-39</span></td></tr>
-      <tr><td class="rank">2</td><td class="center-name">Sweat Lab</td><td class="right tests-count">35</td><td class="right"><span class="change-pill reactivated">reactivated</span></td></tr>
-      <tr><td class="rank">3</td><td class="center-name">Stealth Parts</td><td class="right tests-count">22</td><td class="right"><span class="change-pill up">+20</span></td></tr>
-      <tr><td class="rank">4</td><td class="center-name">Vision Quest Total</td><td class="right tests-count">19</td><td class="right"><span class="change-pill up">+6</span></td></tr>
-      <tr><td class="rank">5</td><td class="center-name">Endurance PTC</td><td class="right tests-count">18</td><td class="right"><span class="change-pill up">+10</span></td></tr>
-      <tr><td class="rank">6</td><td class="center-name">Rathe Athlete Development</td><td class="right tests-count">18</td><td class="right"><span class="change-pill up">+8</span></td></tr>
-      <tr><td class="rank">7</td><td class="center-name">University of Akron</td><td class="right tests-count">17</td><td class="right"><span class="change-pill up">+8</span></td></tr>
-      <tr><td class="rank">8</td><td class="center-name">Rich Stirling LTD</td><td class="right tests-count">16</td><td class="right"><span class="change-pill up">+12</span></td></tr>
-      <tr><td class="rank">9</td><td class="center-name">PF&amp;H Japan</td><td class="right tests-count">16</td><td class="right"><span class="change-pill down">-14</span></td></tr>
-      <tr><td class="rank">10</td><td class="center-name">Peak Performance Wales</td><td class="right tests-count">15</td><td class="right"><span class="change-pill up">+2</span></td></tr>
-      <tr><td class="rank">11</td><td class="center-name">Austroswede</td><td class="right tests-count">15</td><td class="right"><span class="change-pill up">+9</span></td></tr>
-      <tr><td class="rank">12</td><td class="center-name">Connect 2 Perform</td><td class="right tests-count">14</td><td class="right"><span class="change-pill up">+10</span></td></tr>
-      <tr><td class="rank">13</td><td class="center-name">Tritanium Coaching</td><td class="right tests-count">14</td><td class="right"><span class="change-pill up">+5</span></td></tr>
-      <tr><td class="rank">14</td><td class="center-name">Nutrition Mechanic (Becca)</td><td class="right tests-count">13</td><td class="right"><span class="change-pill up">+10</span></td></tr>
-      <tr><td class="rank">15</td><td class="center-name">ELEVATE</td><td class="right tests-count">12</td><td class="right"><span class="change-pill up">+4</span></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- SIGNIFICANT CHANGES -->
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon red">&#x1F4A5;</div>
-    <h2>Significant Changes vs April</h2>
-  </div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">Stealth Parts</div><div class="sig-detail">2 &rarr; 22</div><div class="sig-pct up">+1000%</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">Le Cercle</div><div class="sig-detail">1 &rarr; 10</div><div class="sig-pct up">+900%</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">Nutrition Mechanic (Becca)</div><div class="sig-detail">3 &rarr; 13</div><div class="sig-pct up">+333%</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">Rich Stirling LTD</div><div class="sig-detail">4 &rarr; 16</div><div class="sig-pct up">+300%</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">Connect 2 Perform</div><div class="sig-detail">4 &rarr; 14</div><div class="sig-pct up">+250%</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">Austroswede</div><div class="sig-detail">6 &rarr; 15</div><div class="sig-pct up">+150%</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">Endurance PTC</div><div class="sig-detail">8 &rarr; 18</div><div class="sig-pct up">+125%</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">University of Akron</div><div class="sig-detail">9 &rarr; 17</div><div class="sig-pct up">+89%</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">Rathe Athlete Development</div><div class="sig-detail">10 &rarr; 18</div><div class="sig-pct up">+80%</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">Tritanium Coaching</div><div class="sig-detail">9 &rarr; 14</div><div class="sig-pct up">+56%</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">ELEVATE</div><div class="sig-detail">8 &rarr; 12</div><div class="sig-pct up">+50%</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">Vision Quest Total</div><div class="sig-detail">13 &rarr; 19</div><div class="sig-pct up">+46%</div></div>
-  <div style="height:4px"></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">Sweat Lab</div><div class="sig-detail">0 &rarr; 35</div><div class="sig-pct up">reactivated</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">Coast Cycle Haus</div><div class="sig-detail">-- &rarr; 10</div><div class="sig-pct up">NEW</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">Porsche Human Performance Centre</div><div class="sig-detail">0 &rarr; 8</div><div class="sig-pct up">reactivated</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">Coast Activity Programme</div><div class="sig-detail">0 &rarr; 5</div><div class="sig-pct up">reactivated</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">SISU Training</div><div class="sig-detail">0 &rarr; 4</div><div class="sig-pct up">reactivated</div></div>
-  <div class="sig-item up"><div class="sig-arrow up">&uarr;</div><div class="sig-name">Leeds Sweat Testing</div><div class="sig-detail">-- &rarr; 4</div><div class="sig-pct up">NEW</div></div>
-
-  <div style="height:12px"></div>
-
-  <div class="sig-item down"><div class="sig-arrow down">&darr;</div><div class="sig-name">Stuart Anderson</div><div class="sig-detail">85 &rarr; 5</div><div class="sig-pct down">-94%</div></div>
-  <div class="sig-item down"><div class="sig-arrow down">&darr;</div><div class="sig-name">PF&amp;H HQ</div><div class="sig-detail">91 &rarr; 52</div><div class="sig-pct down">-43%</div></div>
-  <div class="sig-item down"><div class="sig-arrow down">&darr;</div><div class="sig-name">PF&amp;H Japan</div><div class="sig-detail">30 &rarr; 16</div><div class="sig-pct down">-47%</div></div>
-  <div class="sig-item down"><div class="sig-arrow down">&darr;</div><div class="sig-name">Energy Lab</div><div class="sig-detail">19 &rarr; 0</div><div class="sig-pct down">went inactive</div></div>
-  <div class="sig-item down"><div class="sig-arrow down">&darr;</div><div class="sig-name">Macleod Performance Services</div><div class="sig-detail">13 &rarr; 1</div><div class="sig-pct down">-92%</div></div>
-  <div class="sig-item down"><div class="sig-arrow down">&darr;</div><div class="sig-name">Victorem Performance Nutrition</div><div class="sig-detail">12 &rarr; 0</div><div class="sig-pct down">went inactive</div></div>
-  <div class="sig-item down"><div class="sig-arrow down">&darr;</div><div class="sig-name">Edge Cycling</div><div class="sig-detail">11 &rarr; 1</div><div class="sig-pct down">-91%</div></div>
-  <div class="sig-item down"><div class="sig-arrow down">&darr;</div><div class="sig-name">Purple Patch Fitness</div><div class="sig-detail">14 &rarr; 5</div><div class="sig-pct down">-64%</div></div>
-  <div class="sig-item down"><div class="sig-arrow down">&darr;</div><div class="sig-name">Performance Testing LA</div><div class="sig-detail">17 &rarr; 8</div><div class="sig-pct down">-53%</div></div>
-  <div class="sig-item down"><div class="sig-arrow down">&darr;</div><div class="sig-name">Working Triathlete</div><div class="sig-detail">8 &rarr; 0</div><div class="sig-pct down">went inactive</div></div>
-  <div class="sig-item down"><div class="sig-arrow down">&darr;</div><div class="sig-name">Run on Fuel</div><div class="sig-detail">13 &rarr; 5</div><div class="sig-pct down">-62%</div></div>
-</div>
-
-<!-- CENTER ACTIVITY -->
-<div class="two-col">
-  <!-- REACTIVATED -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-icon green">&#x2705;</div>
-      <h2>Reactivated Centers</h2>
-    </div>
-    <p style="font-size:13px; color:var(--text-light); margin-bottom:14px;">19 centers were inactive in April, now testing again.</p>
-    <ul class="status-list">
-      <li><span class="center">Sweat Lab</span><span class="count">35</span></li>
-      <li><span class="center">Porsche Human Performance Centre</span><span class="count">8</span></li>
-      <li><span class="center">Coast Activity Programme</span><span class="count">5</span></li>
-      <li><span class="center">Remo Ultra Coaching</span><span class="count">5</span></li>
-      <li><span class="center">SISU Training</span><span class="count">4</span></li>
-      <li><span class="center">Athlete Defined</span><span class="count">4</span></li>
-      <li><span class="center">AMFIT</span><span class="count">3</span></li>
-      <li><span class="center">White Mountain Ski Co</span><span class="count">3</span></li>
-      <li><span class="center">Good Health</span><span class="count">3</span></li>
-      <li><span class="center">Know Your Numbers</span><span class="count">3</span></li>
-      <li><span class="center">Beads of Success</span><span class="count">2</span></li>
-      <li><span class="center">Albin Athletics</span><span class="count">2</span></li>
-      <li><span class="center">Ben Stolz Myotherapy</span><span class="count">2</span></li>
-      <li><span class="center">PF&amp;H Australia</span><span class="count">2</span></li>
-      <li><span class="center">Eastern Oregon University</span><span class="count">1</span></li>
-      <li><span class="center">Innerunner</span><span class="count">1</span></li>
-      <li><span class="center">Kupaa</span><span class="count">1</span></li>
-      <li><span class="center">Troi Agencies</span><span class="count">1</span></li>
-      <li><span class="center">BH NeuroPerformance</span><span class="count">1</span></li>
-    </ul>
   </div>
 
-  <!-- INACTIVE -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-icon red">&#x1F6D1;</div>
-      <h2>Went Inactive</h2>
-    </div>
-    <p style="font-size:13px; color:var(--text-light); margin-bottom:14px;">12 centers active in April had zero tests in May.</p>
-    <ul class="status-list">
-      <li><span class="center">Energy Lab</span><span class="count" style="color:var(--red)">19 &rarr; 0</span></li>
-      <li><span class="center">Victorem Performance Nutrition</span><span class="count" style="color:var(--red)">12 &rarr; 0</span></li>
-      <li><span class="center">Working Triathlete</span><span class="count" style="color:var(--red)">8 &rarr; 0</span></li>
-      <li><span class="center">Carbon Endurance</span><span class="count" style="color:var(--red)">3 &rarr; 0</span></li>
-      <li><span class="center">RPG Coaching</span><span class="count" style="color:var(--red)">3 &rarr; 0</span></li>
-      <li><span class="center">PT Sports Pro</span><span class="count" style="color:var(--red)">2 &rarr; 0</span></li>
-      <li><span class="center">Dare2Tri</span><span class="count" style="color:var(--red)">1 &rarr; 0</span></li>
-      <li><span class="center">The Nutri Hall</span><span class="count" style="color:var(--red)">1 &rarr; 0</span></li>
-      <li><span class="center">Tri Living</span><span class="count" style="color:var(--red)">1 &rarr; 0</span></li>
-      <li><span class="center">GP Human Performance</span><span class="count" style="color:var(--red)">1 &rarr; 0</span></li>
-      <li><span class="center">URMC Fitness Science</span><span class="count" style="color:var(--red)">1 &rarr; 0</span></li>
-      <li><span class="center">Human Powered Health - Edina</span><span class="count" style="color:var(--red)">1 &rarr; 0</span></li>
-    </ul>
+  <div class="section-label">Annual Summaries</div>
+  <div class="report-list">
+
+    <a class="report-card" href="STC_YoY_Comparison_-_2025_vs_2026.html">
+      <div class="report-info">
+        <div class="report-title">Year-over-Year Comparison -- 2025 vs 2026</div>
+        <div class="report-meta">Feb -- May like-for-like; annualised projection</div>
+      </div>
+      <div class="report-stats">
+        <div class="stat">
+          <div class="stat-value">+23.9%</div>
+          <div class="stat-label">Feb--May YoY</div>
+        </div>
+      </div>
+      <div class="tag summary">Summary</div>
+      <div class="arrow">›</div>
+    </a>
+
+    <a class="report-card" href="STC_Volume_Summary_-_2025_vs_2026.html">
+      <div class="report-info">
+        <div class="report-title">Volume Summary -- 2025 vs 2026</div>
+        <div class="report-meta">Full volume breakdown Jan 2025 -- May 2026</div>
+      </div>
+      <div class="report-stats">
+        <div class="stat">
+          <div class="stat-value">2,836</div>
+          <div class="stat-label">Tests YTD 2026</div>
+        </div>
+      </div>
+      <div class="tag summary">Summary</div>
+      <div class="arrow">›</div>
+    </a>
+
   </div>
-</div>
 
-<!-- NEW CENTERS -->
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon teal">&#x1F31F;</div>
-    <h2>New Centers (Not Previously on Dashboard)</h2>
-  </div>
-  <table>
-    <thead>
-      <tr><th>Center Name</th><th class="right">May Tests</th></tr>
-    </thead>
-    <tbody>
-      <tr><td class="center-name">Coast Cycle Haus</td><td class="right tests-count">10</td></tr>
-      <tr><td class="center-name">PF&amp;H Longmont</td><td class="right tests-count">6</td></tr>
-      <tr><td class="center-name">Leeds Sweat Testing</td><td class="right tests-count">4</td></tr>
-      <tr><td class="center-name">Ogden Running Company</td><td class="right tests-count">3</td></tr>
-      <tr><td class="center-name">SBR Coaching</td><td class="right tests-count">1</td></tr>
-    </tbody>
-  </table>
-</div>
+</main>
 
-<!-- FOOTER -->
-<div class="footer">
-  Precision Fuel &amp; Hydration -- Sweat Test Center Department -- Report generated June 2026
-</div>
+<footer>
+  Precision Fuel &amp; Hydration -- Sweat Test Center Department
+</footer>
 
-</div>
 </body>
 </html>
